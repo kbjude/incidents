@@ -1,0 +1,150 @@
+@import "functions";
+@import "colors";
+
+.nav-wsr {
+    background-color: $custom-001 !important;
+
+    .navbar-brand {
+        img {
+            height: size(20);
+        }
+    }
+
+    .a{
+        color: $white;
+    }
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(231, 228, 228);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: $white;
+    text-decoration: none;
+
+}
+a.nav-link{
+    color: rgb(231, 228, 228);
+}
+
+a.logout {
+    background-color: white;
+    color: $custom-001 !important;
+    border-radius: size(50);
+}
+
+.main-container {
+    padding-left: size(40);
+    .content-header {
+        padding: size(20) size(0);
+        .heading {
+            font-weight: bolder;
+            font-size: size(16);
+        }
+
+        .innerlinks {
+            .dropdown {
+                display: inline;
+            }
+        }
+    }
+
+    .main-body {
+        padding: 0 size(0);
+        min-height: size(500);
+
+        .card-header {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.footer {
+    background-color: $custom-001;
+    height: size(70);
+    /*position: fixed;
+    left: 0;
+    bottom: 0;*/
+    width: 100%;
+    color: #A4A4A4;
+    text-align: left;
+
+    padding-left: size(20);
+    padding-top: size(20);
+    padding-bottom: size(20);
+
+    img {
+        height: size(30);
+    }
+}
+
+.locationtittle {
+    text-align: center;
+}
+
+.map {
+    margin: 40px;
+}
+
+.homemap {
+    margin-top: 2.5%;
+}
+
+.border-shading {
+    border-top: solid 7px;
+    border-left: solid 7px;
+    border-right: solid 7px;
+    padding: 20px;
+    height: 100%;
+    border-color: gainsboro;
+}
+
+.border-shading1 {
+    border-top: solid 7px;
+    border-left: solid 7px;
+    border-right: solid 7px;
+    border-color: gainsboro;
+}
+
+.border-shading-last {
+    border: solid 7px;
+    border-color: gainsboro;
+}
+
+.right-border {
+    border-right: solid 7px;
+    height: 100%;
+    border-color: gainsboro;
+}
+
+.analytics-title {
+    text-align: center;
+}
+
+.title-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-wrapper {
+    display: flex;
+    margin-top: size(60);
+    .main-container {
+        flex: 3;
+    }
+
+    .right-bar {
+        flex: 1;
+    }
+}
+
+.incident-tracker {
+    text-align: center;
+    text-transform: uppercase;
+    color: $custom-001;
+
+    .days {
+        font-weight: bolder;
+    }
+}

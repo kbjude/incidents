@@ -1,0 +1,114 @@
+<div class="card">
+    <div class="card-body">
+        <div class='row'>
+            <div class="col-12 analytics-title">
+            Women Situation Room Insights
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class='row border-shading'>
+            <div class="col-2 right-border">
+                <div>
+                Cases Reported
+                </div>
+                <div>
+                    <%= @incidents %>
+                </div>
+            </div>
+            <div class="col-2 right-border">
+                <div>
+                   Open Cases
+                </div>
+                <div>
+                    <%= @closedcase %>
+                </div>
+            </div>
+            <div class="col-2 right-border">
+                <div>
+                Closed Cases
+                </div>
+                <div>
+                    <%= @opencases %>
+                </div>
+            </div>
+            <div class="col-3 right-border">
+                <div>
+                Dropped Cases
+                </div>
+                <div>
+                    <%= @dropped %>
+                </div>
+            </div>
+            <div class="col-2">
+                <div>
+                Cases Missing Perpetrators
+                </div>
+                <div>
+                    <%= @nooffenders %>
+                </div>
+            </div>
+        </div>
+        <div class='row border-shading1'>
+            <div class="col-4 right-border">
+            Cases by Status
+                <%= pie_chart @status, library: {pieSliceText:'value-and-percentage'}, donut: true, download: true, dataLabels: { enabled: true } %>
+
+            </div>
+            <div class="col-4 right-border">
+            Cases by Month
+                <%= column_chart @monthly_incidents, series: true, xtitle: "Month", ytitle: "Number of Incidents", download: true %>
+            </div>
+            <div class="col-4">
+            Victims by age
+                <%= bar_chart @victim_by_age, xtitle: "Number of Incidents", ytitle: "Age Range", download: true %>
+            </div>
+
+        </div>
+        <div class='row border-shading-last'>
+            <div class="col-4 right-border">
+                Cases by Followup status
+                <% if @followupsstatus %>
+                    <%= pie_chart @followupsstatus, library: {pieSliceText:'value-and-percentage'}, download: true %>
+                    
+                <% else %>
+                    <%= pie_chart 0 %>
+                <% end %>
+            </div>
+            <div class="col-4 right-border">
+                Incidents by hour of day.
+                    <%= bar_chart @timeofday, xtitle: "Incidents", ytitle: "Time", download: true %>
+            </div>
+            <div class="col-4">
+            Cases by Perpetrators category
+                <%= column_chart @offendercategory, library: {pieSliceText:'value-and-percentage'}, xtitle: "Perpetrators Category", ytitle: "Number of Incidents", download: true %>
+            </div>
+        </div>
+        <hr>
+        <div class="map">
+            <div class='row'>
+                <div class='col-12'>
+                    <h4 class = "locationtittle"> Incident by Locations </h4>
+                </div><br><br><br>
+            <div>
+            <div class='row'>
+                <div class= 'col-9'>
+                    <div style='width: 900px;'>  
+                        <div id="map" style='width: 900px; height: 500px;'></div>  
+                    </div>  
+                    <script type="text/javascript">  
+                        handler = Gmaps.build('Google');
+                        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+                            markers = handler.addMarkers(<%=raw @incidents_default.to_json %>)
+                            handler.bounds.extendWith(markers);
+                            handler.fitMapToBounds();
+                        });
+                        </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

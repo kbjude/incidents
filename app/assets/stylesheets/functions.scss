@@ -1,0 +1,8 @@
+// Defining base font size
+// The default font size for html is 16px
+$base-size: 16;
+//Function to convert px value into rem
+//You can replace rem with any other value you want (rem is most preferred value for web)
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1rem;
+}

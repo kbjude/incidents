@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @investigationaction.investigation_id %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @investigationaction.action %>
+</p>
+
+<p>
+  <strong>Resposibility:</strong>
+  <%= @investigationaction.resposibility %>
+</p>
+
+<p>
+  <strong>Target date:</strong>
+  <%= @investigationaction.target_date %>
+</p>
+
+<%= link_to 'Edit', edit_investigationaction_path(@investigationaction) %> |
+<%= link_to 'Back', investigationactions_path %>

@@ -1,0 +1,14 @@
+
+<%= simple_form_for(@investigationcause) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :investigation_id %>
+    <%= f.select :cause_id, grouped_options_for_select(Cause.grouped_list), {prompt: "Please choose"}, {class: "form-control"} %>
+  </div>
+  <br/>
+  <div class="form-actions">
+    <button class="btn btn-primary">Save</button>
+  </div>
+<% end %>

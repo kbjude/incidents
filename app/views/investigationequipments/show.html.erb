@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @investigationequipment.investigation_id %>
+</p>
+
+<p>
+  <strong>Equipment:</strong>
+  <%= @investigationequipment.equipment %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @investigationequipment.description %>
+</p>
+
+<%= link_to 'Edit', edit_investigationequipment_path(@investigationequipment) %> |
+<%= link_to 'Back', investigationequipments_path %>

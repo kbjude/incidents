@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Remark</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @witnesses.each do |witness| %>
+      <tr>
+        <td><%= witness.name %></td>
+        <td><%= witness.contact %></td>
+        <td><%= witness.remark %></td>
+        <td><%= link_to 'Edit', edit_witness_path(witness) %> | <%= link_to 'Destroy', witness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

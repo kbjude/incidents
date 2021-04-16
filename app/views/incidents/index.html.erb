@@ -1,0 +1,71 @@
+<% content_for :heading do %>
+  Incidents
+<% end %>
+
+<script>
+	$(document).ready(function() {
+		$("#sdate").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
+		$("#edate").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
+	}); 
+</script>
+
+<% content_for :innerlinks do %>
+  <%= link_to "Report Incident", new_incident_path %>
+<% end %>
+
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+      <%= form_tag incidents_path, method: :get do %>
+        <div class="row">
+          <div class="col-5">
+            <%= text_field_tag 'search[date_to]', @search.date_to, placeholder: "Start date", class: "form-control" %>
+          </div>
+          <div class="col-5">
+            <%= text_field_tag 'search[date_to]', @search.date_to, placeholder: "End date", class: "form-control" %>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div><br/>
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Category</th>
+          <th>Incident Date</th>
+          <th>Location</th>
+          <th>Reported By</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @incidents.each do |incident| %>
+          <tr>
+            <td><%= link_to incident.id, incident %></td>
+            <td> 
+              <% if incident.incidentcategory %>
+              <%= incident.incidentcategory.name %>
+              <% end %>
+            </td>
+            <td><%= incident.date_time %></td>
+            <td><%= incident.address %></td>
+            <td><%= incident.user.name %></td>
+            <td><%= incident.status %></td>
+            <td></td>
+          </tr>
+        <% end %>       
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="card">
+<div class="card-body">
+    <h2 class="card-title"> <%= @user.name %></h2>
+    <hr>
+    <p class="card-text">
+        Role:    <%= @user.role %> <br />  <br />
+        Email:   <%= @user.email %> <br />
+    </p>
+<hr>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+</div>
+</div>

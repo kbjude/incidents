@@ -1,0 +1,29 @@
+<%= content_for :heading do %>
+  Nature of injury
+<% end %>
+
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+    <%= render 'form', injurytype: @injurytype %>
+  </div>
+</div>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @injurytypes.each do |injurytype| %>
+      <tr>
+        <td><%= injurytype.name %></td>
+        <td><%= injurytype.description %></td>
+        <td><%= link_to 'Edit', edit_injurytype_path(injurytype) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

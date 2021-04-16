@@ -1,0 +1,9 @@
+<% content_for :heading do %>
+  New Incident
+<% end %>
+
+<div class="card" style="margin: 0px">
+    <div class="card-body">
+        <%= render 'form', incident: @incident %>
+    </div>
+</div>

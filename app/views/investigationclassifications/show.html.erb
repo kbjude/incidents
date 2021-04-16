@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @investigationclassification.investigation_id %>
+</p>
+
+<p>
+  <strong>Subclassification:</strong>
+  <%= @investigationclassification.subclassification_id %>
+</p>
+
+<%= link_to 'Edit', edit_investigationclassification_path(@investigationclassification) %> |
+<%= link_to 'Back', investigationclassifications_path %>

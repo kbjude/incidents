@@ -1,0 +1,22 @@
+<tr>
+    <td><%= link_to incident.id, incident %></td>
+    <td> 
+        <% if incident.incidentcategory %>
+        <%= incident.incidentcategory.name %>
+        <% end %>
+    </td>
+    <td><%= link_to incident.date_time, incident %></td>
+    <td><%= local_time(incident.created_at, :long) %></td>
+
+    <td><%= incident.address %></td>
+    <td><%= incident.description %></td>
+    <td><%= incident.status %></td>
+    <td><%= incident.offender %></td>
+    <td><%= time_ago_in_words incident.created_at %> ago</td>
+    <% if can?(:manage, @user)%>
+        <td><%= link_to 'View details', incident %></td>
+        <td><%= link_to 'Edit', edit_incident_path(incident) %></td>
+        <td><%= link_to 'Destroy', incident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+
+</tr>

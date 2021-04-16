@@ -1,0 +1,2 @@
+class ActionRequired < ApplicationRecord
+end

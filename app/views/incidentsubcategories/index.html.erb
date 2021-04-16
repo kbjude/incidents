@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Incidentsubcategories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Incidentcategory</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incidentsubcategories.each do |incidentsubcategory| %>
+      <tr>
+        <td><%= incidentsubcategory.incidentcategory_id %></td>
+        <td><%= incidentsubcategory.name %></td>
+        <td><%= link_to 'Show', incidentsubcategory %></td>
+        <td><%= link_to 'Edit', edit_incidentsubcategory_path(incidentsubcategory) %></td>
+        <td><%= link_to 'Destroy', incidentsubcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Incidentsubcategory', new_incidentsubcategory_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Otps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @otps.each do |otp| %>
+      <tr>
+        <td><%= otp.user_id %></td>
+        <td><%= otp.code %></td>
+        <td><%= link_to 'Show', otp %></td>
+        <td><%= link_to 'Edit', edit_otp_path(otp) %></td>
+        <td><%= link_to 'Destroy', otp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Otp', new_otp_path %>

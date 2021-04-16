@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Subclassifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Classification</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subclassifications.each do |subclassification| %>
+      <tr>
+        <td><%= subclassification.classification_id %></td>
+        <td><%= subclassification.name %></td>
+        <td><%= subclassification.description %></td>
+        <td><%= link_to 'Show', subclassification %></td>
+        <td><%= link_to 'Edit', edit_subclassification_path(subclassification) %></td>
+        <td><%= link_to 'Destroy', subclassification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subclassification', new_subclassification_path %>

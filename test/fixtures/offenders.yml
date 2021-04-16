@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  incident: one
+  name: MyString
+  comment: MyText
+  offendercategory: one
+  address: MyText
+  contact: MyString
+
+two:
+  incident: two
+  name: MyString
+  comment: MyText
+  offendercategory: two
+  address: MyText
+  contact: MyString

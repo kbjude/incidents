@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Investigationequipments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Investigation</th>
+      <th>Equipment</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @investigationequipments.each do |investigationequipment| %>
+      <tr>
+        <td><%= investigationequipment.investigation_id %></td>
+        <td><%= investigationequipment.equipment %></td>
+        <td><%= investigationequipment.description %></td>
+        <td><%= link_to 'Show', investigationequipment %></td>
+        <td><%= link_to 'Edit', edit_investigationequipment_path(investigationequipment) %></td>
+        <td><%= link_to 'Destroy', investigationequipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Investigationequipment', new_investigationequipment_path %>

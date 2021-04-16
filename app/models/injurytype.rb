@@ -1,0 +1,2 @@
+class Injurytype < ApplicationRecord
+end

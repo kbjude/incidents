@@ -1,0 +1,28 @@
+<table border=1>
+    <tr>
+      <th>ID</th>
+      <th>Incidentcategory</th>
+      <th>Date time</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Perpetrators</th>
+    </tr>
+<tbody>
+  <% @incidents.each do |incident| %>
+    <tr>
+      <td><%= link_to incident.id, incident %></td>
+      <td> 
+        <% if incident.incidentcategory %>
+        <%= incident.incidentcategory.name %>
+        <% end %>
+      </td>
+      <td><%= incident.date_time %></td>
+      <td><%= incident.address %></td>
+      <td><%= incident.description %></td>
+      <td><%= incident.status %></td>
+      <td><%= incident.offender %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

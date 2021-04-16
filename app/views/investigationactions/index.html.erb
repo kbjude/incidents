@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Investigationactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Investigation</th>
+      <th>Action</th>
+      <th>Resposibility</th>
+      <th>Target date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @investigationactions.each do |investigationaction| %>
+      <tr>
+        <td><%= investigationaction.investigation_id %></td>
+        <td><%= investigationaction.action %></td>
+        <td><%= investigationaction.resposibility %></td>
+        <td><%= investigationaction.target_date %></td>
+        <td><%= link_to 'Show', investigationaction %></td>
+        <td><%= link_to 'Edit', edit_investigationaction_path(investigationaction) %></td>
+        <td><%= link_to 'Destroy', investigationaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Investigationaction', new_investigationaction_path %>

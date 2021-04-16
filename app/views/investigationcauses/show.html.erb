@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @investigationcause.investigation_id %>
+</p>
+
+<p>
+  <strong>Cause:</strong>
+  <%= @investigationcause.cause_id %>
+</p>
+
+<%= link_to 'Edit', edit_investigationcause_path(@investigationcause) %> |
+<%= link_to 'Back', investigationcauses_path %>

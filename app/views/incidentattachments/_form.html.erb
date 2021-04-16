@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@incidentattachment, multipart: true) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.hidden_field :incident_id %>
+    <div class="row">
+      <div class="col-5">
+        <%= f.input :name, label: false, placeholder: "Name", class: "form-control" %>
+      </div>
+      <div class="col-5">
+      <%= f.input :attachment, as: :file, label: false %>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </div>
+<% end %>

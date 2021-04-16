@@ -1,0 +1,15 @@
+
+<%= simple_form_for(@investigationequipment) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :investigation_id %>
+    <%= f.input :equipment %>
+    <%= f.input :description %>
+  </div>
+  <br/>
+  <div class="form-actions">
+    <button class="btn btn-primary">Save</button>
+  </div>
+<% end %>

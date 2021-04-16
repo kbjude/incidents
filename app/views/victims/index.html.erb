@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Victims</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Incident</th>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Remark</th>
+      <th>Role</th>
+      <th>Employee</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Supervisor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @victims.each do |victim| %>
+      <tr>
+        <td><%= victim.incident_id %></td>
+        <td><%= victim.name %></td>
+        <td><%= victim.contact %></td>
+        <td><%= victim.remark %></td>
+        <td><%= victim.role %></td>
+        <td><%= victim.employee %></td>
+        <td><%= victim.address %></td>
+        <td><%= victim.email %></td>
+        <td><%= victim.supervisor %></td>
+        <td><%= link_to 'Show', victim %></td>
+        <td><%= link_to 'Edit', edit_victim_path(victim) %></td>
+        <td><%= link_to 'Destroy', victim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Victim', new_victim_path %>

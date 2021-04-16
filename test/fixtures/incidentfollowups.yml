@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  incident: 
+  status: 
+  comment: 
+  date: 2020-11-10
+
+two:
+  incident: 
+  status: 
+  comment: 
+  date: 2020-11-10

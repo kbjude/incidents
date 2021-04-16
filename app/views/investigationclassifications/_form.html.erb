@@ -1,0 +1,15 @@
+
+<%= simple_form_for(@investigationclassification) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :investigation_id %>
+    <%= f.grouped_collection_select :subclassification_id, Classification.all, :subclassifications, :name,:id, :name, {prompt: "Please choose"}, {class: "form-control"} %>
+  </div>
+
+  <br/>
+  <div class="form-actions">
+    <button class="btn btn-primary">Save</button>
+  </div>
+<% end %>

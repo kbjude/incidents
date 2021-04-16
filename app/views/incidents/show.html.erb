@@ -1,0 +1,144 @@
+<%= content_for :heading do %>
+  Incident Details
+<% end %>
+
+<%= content_for :innerlinks do %>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#witnessModal">
+  +Witness
+</button>
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Options
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <%= link_to 'Edit', edit_incident_path(@incident),  class: "dropdown-item" %> 
+    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
+      Followup
+    </button>
+    <% if @investigation %>
+      <%= link_to 'Investigation', @investigation,  class: "dropdown-item" %> 
+    <% else %>
+      <%= link_to 'Investigation', new_investigation_path(incident_id: @incident.id),  class: "dropdown-item" %> 
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Incident Followup</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'incidentfollowups/form', incidentfollowup: @incidentfollowup %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="witnessModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Witness</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'witnesses/form', witness: @witness %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin:0px;">
+  <div class="card-body">
+    <div class = "title-area">
+      <div class="card-title"> 
+      <% if @incident.incidentcategory %>
+        <%= @incident.incidentcategory.name %>
+      <% end %>
+      </div>
+      <div class='col-2'>
+        Date: <%= @incident.date_time %> <br />
+      </div>
+    </div>
+    <hr>
+    <div class="card-text row">
+      <div class='col-4'>
+        <b>Location:</b> <%= @incident.address %> <br />
+      </div>
+      <div class='col-4'>
+        <b>Status:</b> <%= @incident.status %> <br />
+      </div>
+      <div class='col-4'>
+      </div>
+    </div><br/>
+    <b>What exactly happened?</b>
+    <div><%= @incident.description %></div><br/>
+    <b>What were you doing when it happened?</b>
+    <div><%= @incident.activity %></div><br/>
+    <b>What caused the incident?</b>
+    <div><%= @incident.cause %></div><br/>
+    <b>What parts of your body were injured?</b>
+    <div><%= @incident.injured_parts %></div>
+    <br/>
+    <b>What would have been done to prevent the incident?</b>
+    <div><%= @incident.prevention %></div>
+    <hr/>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Witness</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Photos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Followup</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <%= render "witnesses/index" %>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <br/>
+        <%= render "incidentattachments/form" %>
+        <br/>
+        <% @incident.incidentattachments.each do |attachment| %>
+          <%= link_to attachment.name ? attachment.name : attachment.attachment.url, attachment.attachment.url %><br/>
+        <% end %>
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @incident.incidentfollowups.each do |record| %>
+              <tr>
+                <td><%= record.date %></td>
+                <td><%= record.status %></td>
+                <td><%= record.comment %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>       
+      </div>
+    </div>
+  </div>
+  <div>
+  </div>
+</div>

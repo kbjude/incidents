@@ -1,0 +1,1 @@
+json.partial! "investigationclassifications/investigationclassification", investigationclassification: @investigationclassification

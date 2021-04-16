@@ -1,0 +1,14 @@
+
+<%= simple_form_for(@incidentcategory) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="row">
+    <div class="form-inputs col-8">
+      <%= f.input :name, class: "form-control", placeholder: "Category name", label: false %>
+    </div>
+
+    <div class="form-actions col-2">
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </div>
+<% end %>

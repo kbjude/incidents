@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Incident:</strong>
+  <%= @incidentworkflow.incident_id %>
+</p>
+
+<p>
+  <strong>Workflowtemplate:</strong>
+  <%= @incidentworkflow.workflowtemplate_id %>
+</p>
+
+<%= link_to 'Edit', edit_incidentworkflow_path(@incidentworkflow) %> |
+<%= link_to 'Back', incidentworkflows_path %>

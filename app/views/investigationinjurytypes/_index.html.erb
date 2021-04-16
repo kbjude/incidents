@@ -1,0 +1,4 @@
+<b>Type of injury:</b>&nbsp;
+<% @investigationinjurytypes.each do |investigationinjurytype| %>
+  &nbsp;&#9989; <%= investigationinjurytype.injurytype.name %> [<%= link_to 'Delete', investigationinjurytype, method: :delete, data: { confirm: 'Are you sure?' } %>]
+<% end %>

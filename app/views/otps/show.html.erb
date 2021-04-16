@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @otp.user_id %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @otp.code %>
+</p>
+
+<%= link_to 'Edit', edit_otp_path(@otp) %> |
+<%= link_to 'Back', otps_path %>

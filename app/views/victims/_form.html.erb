@@ -1,0 +1,21 @@
+
+<%= simple_form_for(@victim) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :incident %>
+    <%= f.input :name %>
+    <%= f.input :contact %>
+    <%= f.input :remark %>
+    <%= f.input :role %>
+    <%= f.input :employee %>
+    <%= f.input :address %>
+    <%= f.input :email %>
+    <%= f.input :supervisor %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

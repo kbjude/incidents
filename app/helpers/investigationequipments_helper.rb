@@ -1,0 +1,2 @@
+module InvestigationequipmentsHelper
+end

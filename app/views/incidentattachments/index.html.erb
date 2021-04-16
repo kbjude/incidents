@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Incidentattachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Incident</th>
+      <th>Filepath</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incidentattachments.each do |incidentattachment| %>
+      <tr>
+        <td>
+          <% if incidentattachment.incident %>
+            <%= incidentattachment.incident.incidentcategory.name %>
+          <% end %>
+        </td>
+        <td><%= incidentattachment.filepath %></td>
+        <td><%= incidentattachment.name %></td>
+        <td><%= link_to 'Show', incidentattachment %></td>
+        <td><%= link_to 'Edit', edit_incidentattachment_path(incidentattachment) %></td>
+        <td><%= link_to 'Destroy', incidentattachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Incidentattachment', new_incidentattachment_path %>

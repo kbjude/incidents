@@ -1,0 +1,10 @@
+
+<% @investigationclassifications.each do |c, records| %>
+  <% if records.count > 0 %>
+    <b><%= c.name %>:</b>&nbsp;
+    <% records.each do |investigationclassification| %>
+      &nbsp;&#9989; <%= investigationclassification.subclassification.name %>
+      [<%= link_to 'Destroy', investigationclassification, method: :delete, data: { confirm: 'Are you sure?' } %>]
+    <% end %><hr/>
+  <% end %>
+<% end %>

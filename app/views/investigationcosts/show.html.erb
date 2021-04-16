@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @investigationcost.investigation_id %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @investigationcost.item %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @investigationcost.amount %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @investigationcost.currency %>
+</p>
+
+<%= link_to 'Edit', edit_investigationcost_path(@investigationcost) %> |
+<%= link_to 'Back', investigationcosts_path %>

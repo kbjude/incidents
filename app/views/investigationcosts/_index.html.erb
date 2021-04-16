@@ -1,0 +1,4 @@
+<% @investigationcosts.each do |investigationcost| %>
+  <b><%= investigationcost.item %>:</b> <%= investigationcost.currency %><%= investigationcost.amount %>
+  [<%= link_to 'Delete', investigationcost, method: :delete, data: { confirm: 'Are you sure?' } %>]&nbsp;&nbsp;
+<% end %>

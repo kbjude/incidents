@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Action Requireds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datetime</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Category</th>
+      <th>Ref number</th>
+      <th>Remarks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @action_requireds.each do |action_required| %>
+      <tr>
+        <td><%= action_required.datetime %></td>
+        <td><%= action_required.name %></td>
+        <td><%= action_required.phone %></td>
+        <td><%= action_required.address %></td>
+        <td><%= action_required.category %></td>
+        <td><%= action_required.ref_number %></td>
+        <td><%= action_required.remarks %></td>
+        <td><%= link_to 'Show', action_required %></td>
+        <td><%= link_to 'Edit', edit_action_required_path(action_required) %></td>
+        <td><%= link_to 'Destroy', action_required, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Action Required', new_action_required_path %>

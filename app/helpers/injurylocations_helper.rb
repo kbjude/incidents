@@ -1,0 +1,2 @@
+module InjurylocationsHelper
+end

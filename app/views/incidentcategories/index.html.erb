@@ -1,0 +1,34 @@
+<%= content_for :heading do %>
+  Incident Categories
+<% end %>
+
+<div class="card">
+  <div class="card-header">New Category</div>
+  <div class="card-body">
+    <%= render 'form', incidentcategory: @incidentcategory %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Subcategories</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @incidentcategories.each do |incidentcategory| %>
+          <tr>
+            <td><%= link_to incidentcategory.name, incidentcategory %></td>
+            <td><%= incidentcategory.incidentsubcategories.count %></td>
+            <td><%= link_to 'Edit', edit_incidentcategory_path(incidentcategory) %> | <%= link_to 'Delete', incidentcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

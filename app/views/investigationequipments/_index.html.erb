@@ -1,0 +1,3 @@
+<% @investigationequipments.each do |investigationequipment| %>
+  <b><%= investigationequipment.equipment %>:</b> <%= investigationequipment.description %> [<%= link_to 'Delete', investigationequipment, method: :delete, data: { confirm: 'Are you sure?' } %>]<hr/>
+<% end %>

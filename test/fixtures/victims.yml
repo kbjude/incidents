@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  incident: 
+  address: 
+  comment: 
+  contact: 
+  agegroup: 
+  name: MyString
+
+two:
+  incident: 
+  address: 
+  comment: 
+  contact: 
+  agegroup: 
+  name: MyString

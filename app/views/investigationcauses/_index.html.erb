@@ -1,0 +1,11 @@
+<div class="card" style="margin: 0px">
+  <div class="card-header">Causes</div>
+  <div class="card-body">
+    <% @investigationcauses.each do |category,causes| %>
+      <b><%= category %>:</b>&nbsp;
+      <% causes.each do |cause| %>
+        &nbsp;&#9989; <%= cause.cause.name %>
+      <% end %><hr/>
+    <% end %>
+  </div>
+</div>

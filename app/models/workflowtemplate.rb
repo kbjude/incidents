@@ -1,0 +1,2 @@
+class Workflowtemplate < ApplicationRecord
+end

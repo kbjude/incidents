@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @investigationinjurylocation.investigation_id %>
+</p>
+
+<p>
+  <strong>Injurylocation:</strong>
+  <%= @investigationinjurylocation.injurylocation_id %>
+</p>
+
+<%= link_to 'Edit', edit_investigationinjurylocation_path(@investigationinjurylocation) %> |
+<%= link_to 'Back', investigationinjurylocations_path %>

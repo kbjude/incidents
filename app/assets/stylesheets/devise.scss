@@ -1,0 +1,74 @@
+@import "functions";
+@import "colors";
+
+.login-wrapper {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: size(120);
+
+    color: $custom-001;
+
+    h1, .logo {
+        text-align: center;
+    }
+    .logo {
+        padding-bottom: size(30);
+        
+        img {
+            height: size(100);
+            border-radius: size(400);
+        }
+    }
+
+    .footer {
+        margin-top: size(30);
+    }
+
+    .wsr-title {
+        font-size: size(65);
+        font-weight: 500;
+    }
+
+    .hr-divider {
+        border-bottom: 1px solid $custom-001;
+        width: 100%;
+        margin-bottom: size(20);
+    }
+
+    .cl-title {
+        max-width: size(180);
+    }
+
+    .wsr-description-wrapper {
+        padding: size(30) size(40) size(30) size(0);
+        border-right: 1px solid $custom-001;
+        margin-top: size(40);
+        .title {
+            font-weight: bold;
+        }
+    }
+
+    .login {
+        padding-left: size(80);
+
+        .welcome-icon {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .welcome-message {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: size(30);
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: $custom-001;
+            color: $white;
+        }
+    }
+}

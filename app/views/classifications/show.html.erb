@@ -1,0 +1,30 @@
+<%= content_for :heading do %>
+  <%= @classification.name %> - <%= @classification.description %>
+<% end %>
+
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+    <%= render 'subclassifications/form', subclassification: @subclassification %>
+  </div>
+</div>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subclassifications.each do |classification| %>
+      <tr>
+        <td><%= classification.name %></td>
+        <td><%= classification.description %></td>
+        <td><%= link_to 'Edit', edit_classification_path(classification) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

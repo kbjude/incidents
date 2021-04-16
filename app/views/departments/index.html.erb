@@ -1,0 +1,29 @@
+<%= content_for :heading do %>
+  Departments
+<% end %>
+
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+    <%= render 'form', department: @department %>
+  </div>
+</div>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departments.each do |department| %>
+      <tr>
+        <td><%= department.name %></td>
+        <td><%= department.description %></td>
+        <td><%= link_to 'Edit', edit_department_path(department) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

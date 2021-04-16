@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Witnesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Incident</th>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Remark</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @witnesses.each do |witness| %>
+      <tr>
+        <td><%= witness.incident_id %></td>
+        <td><%= witness.name %></td>
+        <td><%= witness.contact %></td>
+        <td><%= witness.remark %></td>
+        <td><%= link_to 'Show', witness %></td>
+        <td><%= link_to 'Edit', edit_witness_path(witness) %></td>
+        <td><%= link_to 'Destroy', witness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Witness', new_witness_path %>

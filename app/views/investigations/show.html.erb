@@ -1,0 +1,97 @@
+<%= content_for :heading do %>
+  Investigation Details
+<% end %>
+
+<%= content_for :innerlinks do %>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Options
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <%= link_to 'Edit', edit_investigation_path(@investigation),  class: "dropdown-item" %> 
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#injurytypeModal">
+        Injury type
+      </button>
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#injurylocationModal">
+        Injury Location
+      </button>
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#costModal">
+        Cost
+      </button>
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#classificationModal">
+        Incident Classification
+      </button>
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#actionModal">
+        Corrective Action
+      </button>
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#equipmentModal">
+        Equipment Damage
+      </button>
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#causeModal">
+        Cause(s)
+      </button>
+    </div>
+  </div>
+<% end %>
+<%= render "investigationinjurytypes/modal" %>
+<%= render "investigationinjurylocations/modal" %>
+<%= render "investigationcosts/modal" %>
+<%= render "investigationclassifications/modal" %>
+<%= render "investigationactions/modal" %>
+<%= render "investigationequipments/modal" %>
+<%= render "investigationcauses/modal" %>
+<div class="card" style="margin: 0px">
+  <div class="card-header">
+    Incident Details
+  </div>
+  <div class="card-body">
+      <b>ID:</b> <%= link_to @investigation.incident.id, @investigation.incident %>&nbsp;&nbsp;
+      <% if @investigation.incident.incidentcategory %>
+        <%= @investigation.incident.incidentcategory.name %>
+      <% end %>
+      - <%= @investigation.incident.date_time %> 
+      &nbsp;&nbsp;|&nbsp;<b>Reported:</b> <%= @investigation.incident.user.name %>
+      &nbsp;&nbsp;|&nbsp;<%= @investigation.incident.description %>
+  </div>
+</div>
+<br/>
+<div class="card" style="margin: 0px">
+  <div class="card-header">
+    Investigation Details
+  </div>
+  <div class="card-body">
+    <%= @investigation.date.strftime("%d-%m-%Y") %> 
+    &nbsp;&nbsp;|&nbsp;<b>Created By:</b> <%= @investigation.user.name %>
+    &nbsp;&nbsp;|&nbsp;<b>Report Number:</b> <%= @investigation.report_number %>
+    &nbsp;|&nbsp;<strong>Reportable to legal:</strong>&nbsp;<%= @investigation.reportable_to_legal %>
+  </div>
+</div><br/>
+<div class="card" style="margin: 0px">
+  <div class="card-header">Classification</div>
+  <div class="card-body">
+    <%= render "investigationclassifications/index" %>
+  </div>
+</div><br/>
+<%= render "investigationcauses/index" %>
+<br/>
+<div class="card" style="margin: 0px">
+  <div class="card-header">Injury Details</div>
+  <div class="card-body">
+    <%= render "investigationinjurylocations/index" %><hr/>
+    <%= render "investigationinjurytypes/index" %>
+  </div>
+</div>
+<br/>
+<div class="card" style="margin: 0px">
+  <div class="card-header">Equipment / Material Damage description</div>
+  <div class="card-body">
+    <%= render "investigationequipments/index" %>
+  </div>
+</div>
+<br/>
+<div class="card" style="margin: 0px">
+  <div class="card-header">Costs</div>
+  <div class="card-body">
+    <%= render "investigationcosts/index" %>
+  </div>
+</div>

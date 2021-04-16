@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Incidentworkflows</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Incident</th>
+      <th>Workflowtemplate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incidentworkflows.each do |incidentworkflow| %>
+      <tr>
+        <td><%= incidentworkflow.incident_id %></td>
+        <td><%= incidentworkflow.workflowtemplate_id %></td>
+        <td><%= link_to 'Show', incidentworkflow %></td>
+        <td><%= link_to 'Edit', edit_incidentworkflow_path(incidentworkflow) %></td>
+        <td><%= link_to 'Destroy', incidentworkflow, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Incidentworkflow', new_incidentworkflow_path %>

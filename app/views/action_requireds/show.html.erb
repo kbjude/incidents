@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @action_required.datetime %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @action_required.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @action_required.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @action_required.address %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @action_required.category %>
+</p>
+
+<p>
+  <strong>Ref number:</strong>
+  <%= @action_required.ref_number %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @action_required.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_action_required_path(@action_required) %> |
+<%= link_to 'Back', action_requireds_path %>

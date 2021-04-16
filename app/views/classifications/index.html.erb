@@ -1,0 +1,29 @@
+<%= content_for :heading do %>
+  Incident Classification
+<% end %>
+
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+    <%= render 'form', classification: @classification %>
+  </div>
+</div>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @classifications.each do |classification| %>
+      <tr>
+        <td><%= link_to classification.name, classification %></td>
+        <td><%= classification.description %></td>
+        <td><%= link_to 'Edit', edit_classification_path(classification) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

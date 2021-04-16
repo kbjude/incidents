@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Investigationcosts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Investigation</th>
+      <th>Item</th>
+      <th>Amount</th>
+      <th>Currency</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @investigationcosts.each do |investigationcost| %>
+      <tr>
+        <td><%= investigationcost.investigation_id %></td>
+        <td><%= investigationcost.item %></td>
+        <td><%= investigationcost.amount %></td>
+        <td><%= investigationcost.currency %></td>
+        <td><%= link_to 'Show', investigationcost %></td>
+        <td><%= link_to 'Edit', edit_investigationcost_path(investigationcost) %></td>
+        <td><%= link_to 'Destroy', investigationcost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Investigationcost', new_investigationcost_path %>

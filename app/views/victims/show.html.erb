@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Incident:</strong>
+  <%= @victim.incident_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @victim.name %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @victim.contact %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @victim.remark %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @victim.role %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @victim.employee %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @victim.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @victim.email %>
+</p>
+
+<p>
+  <strong>Supervisor:</strong>
+  <%= @victim.supervisor %>
+</p>
+
+<%= link_to 'Edit', edit_victim_path(@victim) %> |
+<%= link_to 'Back', victims_path %>

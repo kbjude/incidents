@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Classification:</strong>
+  <%= @subclassification.classification_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subclassification.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @subclassification.description %>
+</p>
+
+<%= link_to 'Edit', edit_subclassification_path(@subclassification) %> |
+<%= link_to 'Back', subclassifications_path %>

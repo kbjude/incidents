@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Incidenstatuses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incidenstatuses.each do |incidenstatus| %>
+      <tr>
+        <td><%= incidenstatus.status %></td>
+        <td><%= link_to 'Show', incidenstatus %></td>
+        <td><%= link_to 'Edit', edit_incidenstatus_path(incidenstatus) %></td>
+        <td><%= link_to 'Destroy', incidenstatus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Incidenstatus', new_incidenstatus_path %>

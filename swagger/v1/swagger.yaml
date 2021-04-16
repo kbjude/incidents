@@ -1,0 +1,498 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/incidentattachments":
+    post:
+      summary: Create an Incident attachments
+      tags:
+      - Incidentattachments
+      parameters: []
+      responses:
+        '201':
+          description: Incidentattachment created
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                incident_id:
+                  type: integer
+                filepath:
+                  type: string
+                name:
+                  type: string
+              required:
+              - incident_id
+              - filepath
+              - name
+  "/incidents/{id}":
+    get:
+      summary: Retrieves an incident
+      tags:
+      - Victims
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: victim found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  incident_id:
+                    type: integer
+                  filepath:
+                    type: string
+                  name:
+                    type: string
+                  incidentcategory_id:
+                    type: integer
+                  date_time:
+                    type: date_time
+                  longtitude:
+                    type: float
+                  latitude:
+                    type: float
+                  address:
+                    type: string
+                  description:
+                    type: text
+                  status:
+                    type: string
+                  offender:
+                    type: string
+                  comment:
+                    type: text
+                  contactc:
+                    type: string
+                  agegroup:
+                    type: string
+                required:
+                - id
+                - incident_id
+                - address
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  incident_id:
+                    type: integer
+                  filepath:
+                    type: string
+                  name:
+                    type: string
+                  incidentcategory_id:
+                    type: integer
+                  date_time:
+                    type: date_time
+                  longtitude:
+                    type: float
+                  latitude:
+                    type: float
+                  address:
+                    type: string
+                  description:
+                    type: text
+                  status:
+                    type: string
+                  offender:
+                    type: string
+                  comment:
+                    type: text
+                  contactc:
+                    type: string
+                  agegroup:
+                    type: string
+                required:
+                - id
+                - incident_id
+                - address
+        '404':
+          description: victim not found
+          content: {}
+        '406':
+          description: unsupported accept header
+          content: {}
+  "/api/v1/incidentcategories":
+    post:
+      summary: Create an Incident Categories
+      tags:
+      - Incident Categories
+      parameters: []
+      responses:
+        '201':
+          description: incident category
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/incidentcategories/{id}":
+    get:
+      summary: Retrieves an Incident Category
+      tags:
+      - Incidentcategories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Incident Category found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                required:
+                - id
+                - name
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                required:
+                - id
+                - name
+        '404':
+          description: incident not found
+          content: {}
+        '406':
+          description: unsupported accept header
+          content: {}
+  "/api/v1/incidentfollowups":
+    post:
+      summary: Create an Incidentfollowup
+      tags:
+      - Incidentfollowups
+      parameters: []
+      responses:
+        '201':
+          description: incidentfollowup created
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                incident_id:
+                  type: integer
+                status:
+                  type: string
+                comment:
+                  type: text
+                date:
+                  type: date_time
+              required:
+              - incident_id
+              - status
+              - comment
+  "/incidentfollowups/{id}":
+    get:
+      summary: Retrieves an incidentfollowup
+      tags:
+      - Incidentfollowups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Incident followups found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  incident_id:
+                    type: integer
+                  date_time:
+                    type: date_time
+                  comment:
+                    type: text
+                  status:
+                    type: string
+                  date:
+                    type: date_time
+                required:
+                - id
+                - incident_id
+                - status
+                - comment
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  incident_id:
+                    type: integer
+                  date_time:
+                    type: date_time
+                  comment:
+                    type: text
+                  status:
+                    type: string
+                  date:
+                    type: date_time
+                required:
+                - id
+                - incident_id
+                - status
+                - comment
+        '404':
+          description: incidentfollowup not found
+          content: {}
+        '406':
+          description: unsupported accept header
+          content: {}
+  "/api/v1/incidents":
+    post:
+      summary: Create an Incident
+      tags:
+      - Incidents
+      parameters: []
+      responses:
+        '201':
+          description: incident created
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                incidentcategory_id:
+                  type: integer
+                date_time:
+                  type: date_time
+                longtitude:
+                  type: float
+                latitude:
+                  type: float
+                address:
+                  type: string
+                description:
+                  type: text
+                status:
+                  type: string
+                offender:
+                  type: string
+              required:
+              - incidentcategory_id
+              - longtitude
+              - latitude
+              - date_time
+              - offender
+              - status
+  "/api/v1/offendercategories":
+    post:
+      summary: Create an Offendercategories
+      tags:
+      - Offendercategories
+      parameters: []
+      responses:
+        '201':
+          description: offendercategory created
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/api/v1/users":
+    post:
+      summary: Create a Users
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: User created
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+                role:
+                  type: string
+                name:
+                  type: string
+              required:
+              - email
+              - password
+              - password_confirmation
+              - role
+              - name
+  "/users/{id}":
+    get:
+      summary: Retrieves an user
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  password:
+                    type: string
+                  password_confirmation:
+                    type: string
+                  role:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - id
+                - email
+                - password
+                - password_confirmation
+                - role
+                - name
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  password:
+                    type: string
+                  password_confirmation:
+                    type: string
+                  role:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - id
+                - email
+                - password
+                - password_confirmation
+                - role
+                - name
+        '404':
+          description: user not found
+          content: {}
+        '406':
+          description: unsupported accept header
+          content: {}
+  "/api/v1/victims":
+    post:
+      summary: Create a Victim
+      tags:
+      - Victims
+      parameters: []
+      responses:
+        '201':
+          description: Victim created
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                incident_id:
+                  type: integer
+                address:
+                  type: string
+                comment:
+                  type: text
+                contactc:
+                  type: string
+                agegroup:
+                  type: string
+                name:
+                  type: string
+              required:
+              - incident_id
+              - address
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

@@ -1,0 +1,29 @@
+<%= content_for :heading do %>
+  Injury Locations
+<% end %>
+
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+    <%= render 'form', injurylocation: @injurylocation %>
+  </div>
+</div>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @injurylocations.each do |injurylocation| %>
+      <tr>
+        <td><%= injurylocation.name %></td>
+        <td><%= injurylocation.description %></td>
+        <td><%= link_to 'Edit', edit_injurylocation_path(injurylocation) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

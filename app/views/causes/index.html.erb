@@ -1,0 +1,29 @@
+<%= content_for :heading do %>
+  Nature of injury
+<% end %>
+
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+    <%= render 'form', cause: @cause %>
+  </div>
+</div>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @causes.each do |cause| %>
+      <tr>
+        <td><%= cause.name %></td>
+        <td><%= cause.category %></td>
+        <td><%= link_to 'Edit', edit_cause_path(cause) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

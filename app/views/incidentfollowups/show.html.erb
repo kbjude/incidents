@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Incident:</strong>
+  <%= @incidentfollowup.incident %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @incidentfollowup.status %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @incidentfollowup.comment %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @incidentfollowup.date %>
+</p>
+
+<%= link_to 'Edit', edit_incidentfollowup_path(@incidentfollowup) %> |
+<%= link_to 'Back', incidentfollowups_path %>

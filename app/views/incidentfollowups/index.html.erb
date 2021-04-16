@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Incidentfollowups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Incident</th>
+      <th>Status</th>
+      <th>Comment</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incidentfollowups.each do |incidentfollowup| %>
+      <tr>
+        <td><%= incidentfollowup.incident.incidentcategories.name %></td>
+        <td><%= incidentfollowup.status %></td>
+        <td><%= incidentfollowup.comment %></td>
+        <td><%= incidentfollowup.date %></td>
+        <td><%= link_to 'Show', incidentfollowup %></td>
+        <td><%= link_to 'Edit', edit_incidentfollowup_path(incidentfollowup) %></td>
+        <td><%= link_to 'Destroy', incidentfollowup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Incidentfollowup', new_incidentfollowup_path %>
