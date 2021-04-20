@@ -48,13 +48,13 @@ module Api
         user = User.find_by_phone(phone)
         
         if !user
-          email = phone + "@wsruganda.org"
+          email = phone + "@incident.motivug.org"
           user = User.create(email: email, name: email, phone: phone, password: code.to_s + "AZSDX", role: "user")
         end
 
         otp = Otp.create(user_id: user.id, code: code)
         message = 'Your Password is ' + code.to_s
-        resp = send_sms_tiv([phone], message, 'WSR')
+        resp = send_sms_tiv([phone], message, 'MOTIV')
         h = code
         render json: h, status: 200
       end
