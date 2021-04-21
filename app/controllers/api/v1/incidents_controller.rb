@@ -28,40 +28,23 @@ class Api::V1::IncidentsController < ApplicationController
   def createjson
     ignore = ["id", "updated", "createdAt","deleted"]
     incident_params = params[:incident].except(*ignore)
-    @incident = Incident.new(longitude: incident_params[:longitude], description: incident_params[:description], latitude: incident_params[:latitude], address: incident_params[:address])
+    @incident = Incident.new(injured_parts: incident_params[:injuredParts], description: incident_params[:description], activity: incident_params[:activity], address: incident_params[:location], cause: incident_params[:cause], prevention: incident_params[:prevention])
     @incident.date_time = params[:dateTime]
     @incident.incidentcategory_id = params[:incidentCategory][:id]
     @incident.status = "pending"
-    @incident.offender = "N/A"
     if @user
       @incident.user_id = @user.id
     end
     if @incident.save
-      params[:victims].each do |record|
-        victim = Victim.new(name: record[:name], address: record[:address], agegroup: record[:ageGroup], comment: record[:comment], contact: record[:contact])
+      params[:witnesses].each do |record|
+        victim = Witness.new(name: record[:name], remark: record[:remark], contact: record[:contact])
         victim.incident_id = @incident.id
         victim.save
       end
-      params[:offenders].each do |record|
-        offender = Offender.new(name: record[:name], address: record[:address], comment: record[:comment], contact: record[:contact])
-        offender.offendercategory_id = record[:offenderCategoryId]
+
+      params[:victims].each do |record|
+        offender = Victim.new(name: record[:name], address: record[:address], remark: record[:remark], contact: record[:contact], role: record[:role], employee: record[:employee], supervisor: record[:supervisor], email: record[:email])
         offender.incident_id = @incident.id
-        oc = nil
-        if offender.offendercategory_id > 0 
-          oc = Offendercategory.find_by_id(offender.offendercategory_id)
-          if !oc
-            Offendercategory.create(name: "General",id: offender.offendercategory_id)
-          end
-        else
-          oc = Offendercategory.find_by_name("General")
-          if !oc 
-            oc = Offendercategory.create(name: "General")
-          end
-        end
-        if oc 
-          offender.offendercategory_id = oc.id
-          offender.save
-        end
       end
       json_response(@incident)
     else
@@ -135,7 +118,7 @@ class Api::V1::IncidentsController < ApplicationController
         @user = User.find_by_phone(phone)
         code = rand(10000..99999).to_s + "AZSX"
         if !@user
-          email = phone + "@wsruganda.org"
+          email = phone + "@motivug.org"
           @user = User.create(email: email, name: email, phone: phone, password: code, role: "user")
         end
       end
