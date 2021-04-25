@@ -30,6 +30,10 @@ class IncidentsController < ApplicationController
     @witness.incident_id = params[:id]
     @witnesses = Witness.where(incident_id: params[:id]).order("id")
 
+    @victim = Victim.new
+    @victim.incident_id = params[:id]
+    @victims = Victim.where(incident_id: params[:id]).order("id")
+
     @incidentattachment = Incidentattachment.new
     @incidentattachment.incident_id = params[:id]
   end

@@ -28,7 +28,7 @@ class VictimsController < ApplicationController
 
     respond_to do |format|
       if @victim.save
-        format.html { redirect_to @victim, notice: 'Victim was successfully created.' }
+        format.html { redirect_to @victim.incident, notice: 'Victim was successfully created.' }
         format.json { render :show, status: :created, location: @victim }
       else
         format.html { render :new }

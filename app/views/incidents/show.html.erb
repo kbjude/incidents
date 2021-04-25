@@ -12,10 +12,10 @@
     Options
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <%= link_to 'Edit', edit_incident_path(@incident),  class: "dropdown-item" %> 
-    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
-      Followup
+    <button type="button" data-toggle="modal" data-target="#victimModal">
+      +Involved Persons
     </button>
+    <%= link_to 'Edit', edit_incident_path(@incident),  class: "dropdown-item" %> 
     <% if @investigation %>
       <%= link_to 'Investigation', @investigation,  class: "dropdown-item" %> 
     <% else %>
@@ -25,18 +25,17 @@
 </div>
 <% end %>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="victimModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Incident Followup</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Involved Person</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%= render 'incidentfollowups/form', incidentfollowup: @incidentfollowup %>
+        <%= render 'victims/form', witness: @victim %>
       </div>
     </div>
   </div>
@@ -98,15 +97,18 @@
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Witness</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Photos</a>
+        <a class="nav-link" id="victim-tab" data-toggle="tab" href="#victim" role="tab" aria-controls="profile" aria-selected="false">Victims</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Followup</a>
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Photos</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <%= render "witnesses/index" %>
+      </div>
+      <div class="tab-pane fade" id="victim" role="tabpanel" aria-labelledby="home-tab">
+        <%= render "victims/index" %>
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <br/>
@@ -115,27 +117,6 @@
         <% @incident.incidentattachments.each do |attachment| %>
           <%= link_to attachment.name ? attachment.name : attachment.attachment.url, attachment.attachment.url %><br/>
         <% end %>
-      </div>
-      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Comment</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @incident.incidentfollowups.each do |record| %>
-              <tr>
-                <td><%= record.date %></td>
-                <td><%= record.status %></td>
-                <td><%= record.comment %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>       
       </div>
     </div>
   </div>

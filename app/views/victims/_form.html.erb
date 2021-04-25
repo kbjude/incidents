@@ -3,19 +3,29 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.association :incident %>
-    <%= f.input :name %>
-    <%= f.input :contact %>
-    <%= f.input :remark %>
-    <%= f.input :role %>
+    <%= f.hidden_field :incident_id %>
+  <div class="row">
+    <div class="col-6">
+      <%= f.input :name %>
+    </div>
+    <div class="col-6">
+      <%= f.input :contact %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= f.input :remark %>
+    </div>
+    <div class="col-6">
+      <%= f.input :role %>
+    </div>
+  </div>
     <%= f.input :employee %>
     <%= f.input :address %>
     <%= f.input :email %>
     <%= f.input :supervisor %>
-  </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <button class="btn btn-primary">Save</button>
   </div>
 <% end %>
