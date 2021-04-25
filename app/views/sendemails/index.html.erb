@@ -1,0 +1,35 @@
+<h1>Listing sendemails</h1>
+
+<table>
+  <tr>
+    <th>Tenant</th>
+    <th>Sender</th>
+    <th>Destination</th>
+    <th>Subject</th>
+    <th>Message</th>
+    <th>Cc</th>
+    <th>Bcc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sendemails.each do |sendemail| %>
+  <tr>
+    <td><%= sendemail.tenant %></td>
+    <td><%= sendemail.sender %></td>
+    <td><%= sendemail.destination %></td>
+    <td><%= sendemail.subject %></td>
+    <td><%= sendemail.message %></td>
+    <td><%= sendemail.cc %></td>
+    <td><%= sendemail.bcc %></td>
+    <td><%= link_to 'Show', sendemail %></td>
+    <td><%= link_to 'Edit', edit_sendemail_path(sendemail) %></td>
+    <td><%= link_to 'Destroy', sendemail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sendemail', new_sendemail_path %>

@@ -46,6 +46,7 @@ class Api::V1::IncidentsController < ApplicationController
         offender = Victim.new(name: record[:name], address: record[:address], remark: record[:remark], contact: record[:contact], role: record[:role], employee: record[:employee], supervisor: record[:supervisor], email: record[:email])
         offender.incident_id = @incident.id
       end
+      new_incident_email(@incident)
       json_response(@incident)
     else
       render json: @incident.errors, status: :unprocessable_entity
@@ -87,6 +88,32 @@ class Api::V1::IncidentsController < ApplicationController
     else
       render json: @incident.errors, status: :unprocessable_entity
     end
+  end
+
+  def new_incident_email(incident)
+    begin
+      approver_name = "user"
+      dest_email = ""
+      setting = Setting.where(key: "notify_email").first
+      if setting
+        dest_email = setting.value
+        @sendemail = Sendemail.new
+        path = "#{request.protocol}#{request.host_with_port}"
+        filename = "incident_#{incident.id}"
+        tenant = nil
+        subject = "New incident - #{incident.id}"
+        message = "Dear team<br/>A new incident has been reported. <br/>"
+        message += "<hr/>ID: <a href='"+path+"/incident/" + incident.id.to_s + "'>#{incident.id}</a>"
+        message += "<hr/>Date: " + incident.date.strftime("%d-%m-%Y")
+        message += "<hr/>Reported By: " + incident.user.full_name
+        att = Hash.new
+        from = "MOTIV INCIDENT <no-reply@devops.innovationvillage.co.ug"
+        
+        SendEmail.sendemail(dest_email,subject,message,from,att,tenant).deliver
+      end
+    rescue
+      Rails.logger.info "========Problem sending email=============="
+    end  
   end
 
   # PATCH/PUT /incidents/1

@@ -1,0 +1,29 @@
+<%= content_for :heading do %>
+  Settings
+<% end %>
+
+<div class="card" style="margin:0px">
+  <div class="card-body">
+    <%= render 'form', setting: @setting %>
+  </div>
+</div>
+<br/>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @settings.each do |setting| %>
+      <tr>
+        <td><%= setting.key %></td>
+        <td><%= setting.value %></td>
+        <td><%= link_to 'Edit', edit_setting_path(setting) %> | <%= link_to 'Delete', setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

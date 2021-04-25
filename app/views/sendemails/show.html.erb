@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tenant:</b>
+  <%= @sendemail.tenant %>
+</p>
+
+<p>
+  <b>Sender:</b>
+  <%= @sendemail.sender %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @sendemail.destination %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @sendemail.subject %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @sendemail.message %>
+</p>
+
+<p>
+  <b>Cc:</b>
+  <%= @sendemail.cc %>
+</p>
+
+<p>
+  <b>Bcc:</b>
+  <%= @sendemail.bcc %>
+</p>
+
+
+<%= link_to 'Edit', edit_sendemail_path(@sendemail) %> |
+<%= link_to 'Back', sendemails_path %>

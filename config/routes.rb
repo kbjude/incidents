@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :settings
   resources :investigationcauses
   resources :investigationactions
   resources :investigationcosts

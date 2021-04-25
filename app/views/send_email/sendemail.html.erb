@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <title><%= @subject %></title>
+  <style type="text/css">
+  body, td { color:#000000; font-size:14px; font-family:Verdana,Helvetica,Arial; }
+  .divider { background-color:#555555; height:2px; }
+  .episode h2 { margin-top:0; margin-bottom:8px; font-size:18px; }
+  .episode p { margin:8px 0; }
+  .episode img { border:solid 1px #777777; }
+  .episode .duration { font-size:11px;color:#555555; }
+  #header{background: none repeat scroll 0 0 #86221C;color: #FFFFFF;padding: 5px 0;width: 100%;}
+  .container {margin: 0 auto;max-width: 960px;width: 85%;} 
+.logo img {height: auto !important;width: 60px;}
+  body {margin:0px;}
+  #footer {background: none repeat scroll 0 0 #000;border-bottom: 1px solid #A0A0A0;color: #FFFFFF;padding: 5px 0;width: 100%;}
+  #footer a {color:#fff;}
+  #footer td {color:#fff}
+  #main-content  {margin:10px 0;}
+  #main-content table td {padding:10px;}
+  #main-content table img {border:0px;}
+  </style>
+  </head>
+  <body>
+			<div id="header">
+			<div class="container">
+				<div class="pull-left logo">
+					<table><tr><td style="color:#fff"> <b><%= @subject %></b></td></tr></table>
+				</div>
+			</div>
+			</div>
+			<div id="main-content">
+				<div class="container">
+				<table width="100%">
+					<tr>
+						<td valign="top"><%= @message.gsub("\r\n","<br/>").html_safe %></td>
+						<td valign="top" style="border-left:1px solid #E4E4E4; width:350px;">
+							<div class="pull-left">
+							</div>
+							<br/>
+							<div>
+							</div>
+							<br/>
+						</td>
+					</tr>
+				</table>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="container" style="padding:10px;">
+					
+				</div>
+			</div>
+</body>
+</html>

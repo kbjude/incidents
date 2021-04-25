@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Remark</th>
+      <th>Role</th>
+      <th>Employee</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Supervisor</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @victims.each do |victim| %>
+      <tr>
+        <td><%= victim.name %></td>
+        <td><%= victim.contact %></td>
+        <td><%= victim.remark %></td>
+        <td><%= victim.role %></td>
+        <td><%= victim.employee %></td>
+        <td><%= victim.address %></td>
+        <td><%= victim.email %></td>
+        <td><%= victim.supervisor %></td>
+        <td><%= link_to 'Edit', edit_victim_path(victim) %> | <%= link_to 'Destroy', victim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

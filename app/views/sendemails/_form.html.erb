@@ -1,0 +1,45 @@
+<%= form_for(@sendemail) do |f| %>
+  <% if @sendemail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sendemail.errors.count, "error") %> prohibited this sendemail from being saved:</h2>
+
+      <ul>
+      <% @sendemail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tenant %><br />
+    <%= f.text_field :tenant %>
+  </div>
+  <div class="field">
+    <%= f.label :sender %><br />
+    <%= f.text_field :sender %>
+  </div>
+  <div class="field">
+    <%= f.label :destination %><br />
+    <%= f.text_area :destination %>
+  </div>
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_area :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_area :message %>
+  </div>
+  <div class="field">
+    <%= f.label :cc %><br />
+    <%= f.text_area :cc %>
+  </div>
+  <div class="field">
+    <%= f.label :bcc %><br />
+    <%= f.text_area :bcc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

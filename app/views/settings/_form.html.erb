@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@setting) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="row">
+    <div class="col-5">
+    <%= f.input :key %>
+    </div>
+    <div class="col-5">
+    <%= f.input :value %>
+    </div>
+    <div class="col-2">
+      <div style="height:30px"></div>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </div>
+<% end %>

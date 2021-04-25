@@ -41,6 +41,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/new
   def new
     @incident = Incident.new
+    @incident.status = "Open"
     @incidentcategory = Incidentcategory.new
   end
 
@@ -56,6 +57,7 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       if @incident.save
+        new_incident_email(@incident)
         format.html { redirect_to @incident, notice: 'Incident was successfully created.' }
         format.json { render :show, status: :created, location: @incident }
       else
@@ -88,6 +90,34 @@ class IncidentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_incident_email(incident)
+    begin
+      approver_name = "user"
+      dest_email = ""
+      setting = Setting.where(key: "notify_email").first
+      if setting
+        dest_email = setting.value
+        @sendemail = Sendemail.new
+        path = "#{request.protocol}#{request.host_with_port}"
+        filename = "incident_#{incident.id}"
+        tenant = nil
+        subject = "New incident - #{incident.id}"
+        message = "Dear team<br/>A new incident has been reported. <br/>"
+        message += "<hr/>ID: <a href='"+path+"/incident/" + incident.id.to_s + "'>#{incident.id}</a>"
+        message += "<hr/>Date: " + incident.date.strftime("%d-%m-%Y")
+        message += "<hr/>Reported By: " + incident.user.full_name
+        att = Hash.new
+        from = "MOTIV INCIDENT <no-reply@devops.innovationvillage.co.ug"
+        
+        SendEmail.sendemail(dest_email,subject,message,from,att,tenant).deliver
+      end
+    rescue
+      Rails.logger.info "========Problem sending email=============="
+    end  
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
