@@ -28,7 +28,7 @@ class ActionRequiredsController < ApplicationController
 
     respond_to do |format|
       if @action_required.save
-        format.html { redirect_to @action_required, notice: 'Action required was successfully created.' }
+        format.html { redirect_to @action_required.incident, notice: 'Action required was successfully created.' }
         format.json { render :show, status: :created, location: @action_required }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class ActionRequiredsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def action_required_params
-      params.require(:action_required).permit(:datetime, :name, :phone, :address, :category, :ref_number, :remarks)
+      params.require(:action_required).permit(:datetime, :name, :phone, :address, :category, :ref_number, :remarks, :incident_id)
     end
 end

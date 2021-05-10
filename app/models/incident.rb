@@ -4,6 +4,7 @@ class Incident < ApplicationRecord
     has_many :incidentfollowups
     has_many :witnesses
     has_many :victims
+    has_many :action_requireds
     belongs_to :user
 
     scope :filter_by_start_date, ->(start_date) { where date_time: start_date }

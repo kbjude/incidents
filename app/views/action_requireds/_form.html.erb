@@ -2,18 +2,41 @@
 <%= simple_form_for(@action_required) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :datetime %>
-    <%= f.input :name %>
-    <%= f.input :phone %>
-    <%= f.input :address %>
-    <%= f.input :category %>
-    <%= f.input :ref_number %>
-    <%= f.input :remarks %>
+  <%= f.hidden_field :incident_id %>
+  <div class="row">
+    <div class="col-12">
+      <%= f.select :category, ['Hospitalization Required','Physician Visit Required','Law Enforcement Contact Required'], {prompt: "Category"}, {class: "form-control"} %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :datetime %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= f.input :name %>
+    </div>
+    <div class="col-6">
+      <%= f.input :phone %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= f.input :address %>
+    </div>
+    <div class="col-6">
+      <%= f.input :ref_number %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :remarks %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <button class="btn btn-primary">Save</button>
   </div>
 <% end %>

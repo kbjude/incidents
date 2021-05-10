@@ -1,39 +1,57 @@
-<p id="notice"><%= notice %></p>
+<%= content_for :heading do %>
+  Investigations
+<% end %>
 
-<h1>Investigations</h1>
+<div class="card" style="margin: 0px">
+  <div class="card-body">
+      <%= form_tag investigations_path, method: :get do %>
+        <div class="row">
+          <div class="col-5">
+            <%= select_tag "status", options_for_select(['Pending','In Progress','Completed','Canceled']), :prompt=>"Status", id: "status", :class=>"form-control" %>
+          </div>
+          <div class="col-5">
+            <%= select_tag "user_id", options_from_collection_for_select(User.all.order("name"), :id, :name), :prompt=>"Investigator", id: "user_id", :class=>"form-control" %>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div><br/>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Incident</th>
-      <th>User</th>
+      <th>ID #</th>
+      <th>Investigator</th>
       <th>Report number</th>
       <th>Date</th>
       <th>Department</th>
       <th>Status</th>
       <th>Reportable to legal</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @investigations.each do |investigation| %>
       <tr>
-        <td><%= investigation.incident_id %></td>
-        <td><%= investigation.user_id %></td>
+        <td><%= link_to investigation.incident_id, investigation %></td>
+        <td>
+          <% if investigation.user %>
+            <%= investigation.user.name %>
+          <% end %>
+        </td>
         <td><%= investigation.report_number %></td>
         <td><%= investigation.date %></td>
-        <td><%= investigation.department_id %></td>
+        <td>
+          <% if investigation.department %>
+            <%= investigation.department.name %>
+          <% end %>
+        </td>
         <td><%= investigation.status %></td>
         <td><%= investigation.reportable_to_legal %></td>
-        <td><%= link_to 'Show', investigation %></td>
-        <td><%= link_to 'Edit', edit_investigation_path(investigation) %></td>
-        <td><%= link_to 'Destroy', investigation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Investigation', new_investigation_path %>

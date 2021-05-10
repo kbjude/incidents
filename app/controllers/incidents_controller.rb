@@ -36,6 +36,10 @@ class IncidentsController < ApplicationController
 
     @incidentattachment = Incidentattachment.new
     @incidentattachment.incident_id = params[:id]
+
+    @action_required = ActionRequired.new
+    @action_required.incident_id = params[:id]
+    @action_requireds = ActionRequired.where(incident_id: params[:id])
   end
 
   # GET /incidents/new

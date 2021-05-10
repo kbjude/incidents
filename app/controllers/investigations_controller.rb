@@ -4,7 +4,7 @@ class InvestigationsController < ApplicationController
   # GET /investigations
   # GET /investigations.json
   def index
-    @investigations = Investigation.all
+    @investigations = Investigation.search(params).order("id desc")
   end
 
   # GET /investigations/1
